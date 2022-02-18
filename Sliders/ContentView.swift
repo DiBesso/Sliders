@@ -9,28 +9,27 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var redSliderValue = Double.random(in: 0...255)
-    @State private var greenSliderValue = Double.random(in: 0...255)
-    @State private var blueSliderValue = Double.random(in: 0...255)
-    @State private var color: Color = .black
+    @State private var redSliderValue = Double.random(in: 0...1)
+    @State private var greenSliderValue = Double.random(in: 0...1)
+    @State private var blueSliderValue = Double.random(in: 0...1)
     @State private var valueForRedSlider = ""
     @State private var valueForGreenSlider = ""
     @State private var valueForBlueSlider = ""
     
     var body: some View {
         VStack (spacing: 40) {
-            RoundedRectangleView(color: color)
+            RoundedRectangleView(color: Color(red: redSliderValue, green: greenSliderValue, blue: blueSliderValue, opacity: 1))
                 .padding()
             HStack {
-                SliderView(sliderValue: $redSliderValue, color: color)
+                SliderView(sliderValue: $redSliderValue)
                 TextFieldView(value: $valueForRedSlider, color: .red)
             }
             HStack {
-                SliderView(sliderValue: $greenSliderValue, color: color)
+                SliderView(sliderValue: $greenSliderValue)
                 TextFieldView(value: $valueForGreenSlider, color: .green)
             }
             HStack {
-                SliderView(sliderValue: $blueSliderValue, color: color)
+                SliderView(sliderValue: $blueSliderValue)
                 TextFieldView(value: $valueForBlueSlider, color: .blue)
             }
             Spacer()
@@ -47,14 +46,12 @@ struct ContentView_Previews: PreviewProvider {
 
 struct SliderView: View {
    @Binding var sliderValue: Double
-    let color: Color
-
+    
             var body: some View {
                 HStack {
-                    Text("\(lround(sliderValue))")
-                        .foregroundColor(color)
+                    Text("\(sliderValue, specifier: "%.2f")")
                         .frame(width: 40)
-                    Slider(value: $sliderValue, in: 0...255, step: 1)
+                         Slider(value: $sliderValue, in: 0...1, step: 0.01)
                         
                 }
                 .padding(.horizontal)
