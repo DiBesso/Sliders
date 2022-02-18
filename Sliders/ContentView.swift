@@ -21,16 +21,16 @@ struct ContentView: View {
             RoundedRectangleView(color: Color(red: redSliderValue, green: greenSliderValue, blue: blueSliderValue, opacity: 1))
                 .padding()
             HStack {
-                SliderView(sliderValue: $redSliderValue)
-                TextFieldView(value: $valueForRedSlider, color: .red)
+                SliderView(sliderValue: $redSliderValue, color: .red)
+                TextFieldView(value: $valueForRedSlider)
             }
             HStack {
-                SliderView(sliderValue: $greenSliderValue)
-                TextFieldView(value: $valueForGreenSlider, color: .green)
+                SliderView(sliderValue: $greenSliderValue, color: .green)
+                TextFieldView(value: $valueForGreenSlider)
             }
             HStack {
-                SliderView(sliderValue: $blueSliderValue)
-                TextFieldView(value: $valueForBlueSlider, color: .blue)
+                SliderView(sliderValue: $blueSliderValue, color: .blue)
+                TextFieldView(value: $valueForBlueSlider)
             }
             Spacer()
             }
@@ -46,12 +46,14 @@ struct ContentView_Previews: PreviewProvider {
 
 struct SliderView: View {
    @Binding var sliderValue: Double
+    let color: Color
     
             var body: some View {
                 HStack {
                     Text("\(sliderValue, specifier: "%.2f")")
                         .frame(width: 40)
                          Slider(value: $sliderValue, in: 0...1, step: 0.01)
+                        .colorMultiply(color)
                         
                 }
                 .padding(.horizontal)
@@ -60,7 +62,6 @@ struct SliderView: View {
 
 struct TextFieldView: View {
     @Binding var value: String
-    let color: Color
     
     var body: some View {
         TextField("0", text: $value)
@@ -68,7 +69,7 @@ struct TextFieldView: View {
             .overlay(
                 RoundedRectangle(cornerRadius: 2)
                     .stroke(lineWidth: 0.5)
-                    .foregroundColor(.red)
+                    .foregroundColor(.black)
                 )
 
     }
