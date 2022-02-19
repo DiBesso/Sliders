@@ -22,20 +22,21 @@ struct ContentView: View {
                 .padding()
             HStack {
                 SliderView(sliderValue: $redSliderValue, color: .red)
-                TextFieldView(value: $valueForRedSlider)
+                TextFieldView(sliderValue: $redSliderValue, value: $valueForRedSlider)
             }
             HStack {
                 SliderView(sliderValue: $greenSliderValue, color: .green)
-                TextFieldView(value: $valueForGreenSlider)
+                TextFieldView(sliderValue: $greenSliderValue, value: $valueForGreenSlider)
             }
             HStack {
                 SliderView(sliderValue: $blueSliderValue, color: .blue)
-                TextFieldView(value: $valueForBlueSlider)
+                TextFieldView(sliderValue: $blueSliderValue, value: $valueForBlueSlider)
             }
             Spacer()
             }
         }
-        
+    
+    
     }
 
 struct ContentView_Previews: PreviewProvider {
@@ -44,33 +45,4 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct SliderView: View {
-   @Binding var sliderValue: Double
-    let color: Color
-    
-            var body: some View {
-                HStack {
-                    Text("\(sliderValue, specifier: "%.2f")")
-                        .frame(width: 40)
-                         Slider(value: $sliderValue, in: 0...1, step: 0.01)
-                        .colorMultiply(color)
-                        
-                }
-                .padding(.horizontal)
-            }
-        }
 
-struct TextFieldView: View {
-    @Binding var value: String
-    
-    var body: some View {
-        TextField("0", text: $value)
-            .frame(width: 35)
-            .overlay(
-                RoundedRectangle(cornerRadius: 2)
-                    .stroke(lineWidth: 0.5)
-                    .foregroundColor(.black)
-                )
-
-    }
-}
