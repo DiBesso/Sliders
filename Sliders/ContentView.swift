@@ -21,15 +21,15 @@ struct ContentView: View {
             RoundedRectangleView(color: Color(red: redSliderValue, green: greenSliderValue, blue: blueSliderValue, opacity: 1))
                 .padding()
             HStack {
-                SliderView(sliderValue: $redSliderValue, color: .red)
+                SliderView(sliderValue: $redSliderValue, color: .red, valueText: $valueForRedSlider)
                 TextFieldView(sliderValue: $redSliderValue, value: $valueForRedSlider)
             }
             HStack {
-                SliderView(sliderValue: $greenSliderValue, color: .green)
+                SliderView(sliderValue: $greenSliderValue, color: .green, valueText: $valueForGreenSlider)
                 TextFieldView(sliderValue: $greenSliderValue, value: $valueForGreenSlider)
             }
             HStack {
-                SliderView(sliderValue: $blueSliderValue, color: .blue)
+                SliderView(sliderValue: $blueSliderValue, color: .blue, valueText: $valueForBlueSlider)
                 TextFieldView(sliderValue: $blueSliderValue, value: $valueForBlueSlider)
             }
             Spacer()

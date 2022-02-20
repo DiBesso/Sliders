@@ -12,20 +12,21 @@ struct TextFieldView: View {
     @Binding var value: String
     @State var text = ""
     @State var alertPresented = false
+    
     var body: some View {
-        VStack{ TextField("0", text: $text)
+         TextField("0", text: $text) {
+            checkTextField()
+        }
             .frame(width: 35)
             .overlay(
                 RoundedRectangle(cornerRadius: 2)
                     .stroke(lineWidth: 0.5)
                     .foregroundColor(.black)
                 )
-
-        Button("Done", action: checkTextField)
                 .alert("Wrong format", isPresented: $alertPresented , actions: {}) {
                     Text ("Enter Double format")
                 }
-        }
+                .padding()
     }
     
     private func checkTextField() {
