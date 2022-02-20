@@ -19,7 +19,7 @@ struct SliderView: View {
                         .colorMultiply(color)
                         .onChange(of: sliderValue) { newValue in
                             sliderValue = newValue
-                            valueText = String(newValue)
+                            valueText = String(format: "%.2f", newValue)
                         }
                 }
                 .padding(.horizontal)
