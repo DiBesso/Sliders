@@ -10,8 +10,8 @@ import SwiftUI
 struct TextFieldView: View {
     @Binding var sliderValue: Double
     @Binding var value: String
-    @State var text = ""
-    @State var alertPresented = false
+    @State private var text = ""
+    @State private var alertPresented = false
     
     var body: some View {
          TextField("0", text: $text) {
