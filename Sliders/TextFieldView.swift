@@ -14,7 +14,7 @@ struct TextFieldView: View {
     @State private var alertPresented = false
     
     var body: some View {
-         TextField("0", text: $text) {
+         TextField("0", text: $value) {
             checkTextField()
         }
             .frame(width: 35)
@@ -36,7 +36,7 @@ struct TextFieldView: View {
             return
         }
         alertPresented.toggle()
-        text = ""
+        value = ""
         
     }
 }
